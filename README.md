@@ -18,6 +18,10 @@ Be sure to check out example/example.js
       // output == "2 apples"
     });
 
+## Issues
+
+There seems to be a race condition somewhere which sometimes prevents output from being returned properly. Working on it.
+
 ## Documentation
 
 Coming soon!
