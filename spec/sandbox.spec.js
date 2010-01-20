@@ -24,6 +24,12 @@ expect('it should effectively prevent code from accessing node', function(ok) {
   });
 });
 
+expect('it should effectively prevent code from circumventing the sandbox', function(ok) {
+  sb.run("1 + 1; } sys= require('sys'); sys.puts('Up in your fridge'); function foo() {", function(output) {
+    if (output === "SyntaxError: Unexpected token }") ok();
+  });
+});
+
 expect('it should timeout on infinite loops', function(ok) {
   sb.run('while (true) {}', function(output) {
     if (output === "TimeoutError") ok();
