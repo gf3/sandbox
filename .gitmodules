@@ -1,0 +1,3 @@
+[submodule "vendor/simplicityjs"]
+	path = vendor/simplicityjs
+	url = git://github.com/felixge/simplicityjs.git
