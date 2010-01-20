@@ -1,6 +1,6 @@
 # Node Sandbox
 
-A rudimentary javascript sandbox for use with NodeJS.
+A rudimentary javascript sandbox for use with node.js.
 
 ## Some features
 
@@ -20,7 +20,7 @@ Be sure to check out example/example.js
 
 ## Issues
 
-There seems to be a race condition somewhere which sometimes prevents output from being returned properly. Working on it.
+There seems to be a race condition somewhere which sometimes prevents output from being returned properly. **Update:*** This is a node.js issue and will be fixed soon.
 
 ## Documentation
 
