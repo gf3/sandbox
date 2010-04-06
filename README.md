@@ -20,7 +20,9 @@ Be sure to check out example/example.js
 
 ## Issues
 
-There seems to be a race condition somewhere which sometimes prevents output from being returned properly. **Update:*** This is a node.js issue and will be fixed soon.
+There seems to be a race condition somewhere which sometimes prevents output from being returned properly.
+
+**Update:** This is no longer an issue with the latest version of node.
 
 ## Documentation
 
