@@ -1,3 +1,6 @@
 [submodule "vendor/simplicityjs"]
 	path = vendor/simplicityjs
 	url = git://github.com/felixge/simplicityjs.git
+[submodule "vendor/utools"]
+	path = vendor/utools
+	url = git://github.com/gf3/utools.git
