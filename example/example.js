@@ -1,7 +1,7 @@
-var sys = require("sys");
-process.mixin(GLOBAL, require("../lib/sandbox"));
-
-var s = new Sandbox();
+var sys = require("sys")
+  , Sandbox = require("../lib/sandbox")
+  , s = new Sandbox()
+  ;
 
 // Example 1 - Standard JS
 s.run("1 + 1", function(output) {
