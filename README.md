@@ -30,6 +30,19 @@ Coming soon!
 
 Basic syntax: `sandbox_instance.run(code_string, hollaback_function)`
 
+## installation & running.
+
+	git http://github.com/gf3/node-sandbox.git
+
+now instruct git to download submodules (into node-sandbox/vendor)
+
+	cd node-sandbox
+	git submodule init
+
+run an example
+	cd example
+	node example.js
+
 ## Author
 
 Written by [Gianni Chiappetta](http://github.com/gf3) &ndash; [gf3.ca](http://gf3.ca)
