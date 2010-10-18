@@ -32,8 +32,7 @@ Let's get it!
 
 And run some examples:
 
-    cd example
-    node example.js
+    node example/example.js
 
 ## Tests
 
