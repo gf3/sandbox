@@ -13,41 +13,35 @@ A rudimentary javascript sandbox for use with node.js.
 
 Be sure to check out example/example.js
 
-    var s = new Sandbox();
-    s.run('1 + 1 + " apples"', function(output) {
+    var s = new Sandbox()
+    s.run( '1 + 1 + " apples"', function( output ) {
       // output == "2 apples"
-    });
-
-## Issues
-
-There seems to be a race condition somewhere which sometimes prevents output from being returned properly.
-
-**Update:** This is no longer an issue with the latest version of node.
+    })
 
 ## Documentation
 
 Coming soon!
 
-Basic syntax: `sandbox_instance.run(code_string, hollaback_function)`
+Basic syntax: `sandbox_instance.run( code_string, hollaback_function )`
 
-## installation & running.
+## Installation & Running
 
-	git http://github.com/gf3/node-sandbox.git
+Let's get it!
 
-now instruct git to download submodules (into node-sandbox/vendor)
+    git clone git://github.com/gf3/node-sandbox.git
 
-	cd node-sandbox
-	git submodule init
+And run some examples:
 
-run an example
-	cd example
-	node example.js
+    cd example
+    node example.js
 
-## run tests
+## Tests
 
-	npm install async_testing
-	node spec/sandbox.spec.js
+    npm install async_testing
+    node spec/sandbox.spec.js
 
 ## Author
 
-Written by [Gianni Chiappetta](http://github.com/gf3) &ndash; [gf3.ca](http://gf3.ca)
+- Written by [Gianni Chiappetta](http://github.com/gf3) &ndash; [gf3.ca](http://gf3.ca)
+- Updates by [Dominic Tarr](http://github.com/dominictarr) &ndash; [cyber-hobo.blogspot.com](http://cyber-hobo.blogspot.com/)
+
