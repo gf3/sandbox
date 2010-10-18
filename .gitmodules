@@ -1,3 +1,0 @@
-[submodule "vendor/utools"]
-	path = vendor/utools
-	url = git://github.com/gf3/utools.git
