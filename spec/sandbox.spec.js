@@ -1,37 +1,45 @@
 /* ------------------------------ INIT ------------------------------ */
-var mjsunit = require('mjsunit');
-process.mixin(GLOBAL, require('../vendor/simplicityjs/lib/simplicity'));
-process.mixin(GLOBAL, require('../lib/sandbox'));
+
+var sandbox = require('../lib/sandbox')
 
 /* ------------------------------ Tests ------------------------------ */
-var sb = new Sandbox();
-
-expect('it should execute basic javascript', function(ok) {
+var sb = new sandbox.Sandbox();
+exports['it should execute basic javascript'] = function(test) {
   sb.run('1 + 1', function(output) {
-    if (output === '2') ok();
+	test.equal(output,2)
+	test.finish();
   });
-});
+};
 
-expect('it should gracefully handle syntax errors', function(ok) {
+exports['it should gracefully handle syntax errors'] = function(test) {
   sb.run('hi)there', function(output) {
-    if (output === 'SyntaxError: Unexpected token )') ok();
+	test.equal(output,"'SyntaxError: Unexpected token )'")
+	test.finish();
   });
-});
+};
 
-expect('it should effectively prevent code from accessing node', function(ok) {
+exports['it should effectively prevent code from accessing node'] = function(test) {
   sb.run('process.platform', function(output) {
-    if (output === "TypeError: Cannot read property 'platform' of null") ok();
+	test.equal(output,"'TypeError: Cannot read property \\'platform\\' of null'")
+	test.finish();
   });
-});
+};
 
-expect('it should effectively prevent code from circumventing the sandbox', function(ok) {
-  sb.run("1 + 1; } sys= require('sys'); sys.puts('Up in your fridge'); function foo() {", function(output) {
-    if (output === "SyntaxError: Unexpected token }") ok();
+exports['it should effectively prevent code from circumventing the sandbox'] = function(test) {
+  sb.run("1 + 1; sys= require('sys'); sys.puts('Up in your fridge'); function foo() {", function(output) {
+	test.equal(output,"'SyntaxError: Unexpected end of input'")
+	test.finish();
   });
-});
+};
 
-expect('it should timeout on infinite loops', function(ok) {
+exports['it should timeout on infinite loops'] = function(test) {
   sb.run('while (true) {}', function(output) {
-    if (output === "TimeoutError") ok();
+	test.equal(output,"TimeoutError")
+	test.finish();
   });
-});
+};
+
+if (module == require.main) {
+  require('async_testing').run(__filename, process.ARGV);
+}
+
