@@ -43,6 +43,11 @@ run an example
 	cd example
 	node example.js
 
+## run tests
+
+	npm install async_testing
+	node spec/sandbox.spec.js
+
 ## Author
 
 Written by [Gianni Chiappetta](http://github.com/gf3) &ndash; [gf3.ca](http://gf3.ca)

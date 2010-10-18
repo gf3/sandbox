@@ -1,9 +1,9 @@
 /* ------------------------------ INIT ------------------------------ */
 
-var sandbox = require('../lib/sandbox')
+var Sandbox = require('../lib/sandbox')
 
 /* ------------------------------ Tests ------------------------------ */
-var sb = new sandbox.Sandbox();
+var sb = new Sandbox();
 exports['it should execute basic javascript'] = function(test) {
   sb.run('1 + 1', function(output) {
 	test.equal(output,2)
