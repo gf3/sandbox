@@ -1,0 +1,20 @@
+{ "name" : "sandbox"
+, "description": "A nifty javascript sandbox for use with node.js"
+, "author" : "Gianni Chiappetta <gianni@runlevel6.org> (http://gf3.ca)"
+, "contributors":
+  [ "Dominic Tarr (http://cyber-hobo.blogspot.com)"
+  ]
+, "version" : "0.7.0"
+, "main" : "./lib/sandbox"
+, "directories" : { "lib" : "./lib" }
+, "engines" : [ "node >=0.3.0-pre" ]
+, "repository" :
+  { "type" : "git"
+  , "url" : "https://gf3@github.com/gf3/sandbox.git"
+  }
+, "license" :
+  { "type" : "Public Domain"
+  , "url" : "http://github.com/gf3/sandbox/raw/master/UNLICENSE"
+  }
+}
+
