@@ -43,7 +43,7 @@ footer > * {
 }
 /* line 34, ../_sass/_layout.sass */
 footer h2, footer h3 {
-  color: #535353;
+  color: #6b6b6b;
   text-shadow: 0 -1px 0 black;
 }
 
@@ -74,9 +74,9 @@ h1, h2, h3 {
 
 /* line 17, ../_sass/_typography.sass */
 h1 {
-  margin-bottom: 12px;
-  font-size: 24px;
-  line-height: 24px;
+  margin-bottom: 8px;
+  font-size: 28px;
+  line-height: 28px;
 }
 
 /* line 22, ../_sass/_typography.sass */
@@ -93,19 +93,16 @@ h3 {
   line-height: 20px;
 }
 
-/* line 33, ../_sass/_typography.sass */
-body > header:first-child {
-  text-shadow: 0 2px 3px black, 0 -1px 0 white;
-}
-/* line 35, ../_sass/_typography.sass */
+/* line 34, ../_sass/_typography.sass */
 body > header:first-child h1 {
   font-family: "Yanone Kaffeesatz", arial, serif;
   font-weight: 400;
   text-transform: uppercase;
   font-weight: 700;
   color: #8fd323;
+  text-shadow: 0 2px 3px black, 0 -1px 0 white;
 }
-/* line 38, ../_sass/_typography.sass */
+/* line 40, ../_sass/_typography.sass */
 body > header:first-child p {
   margin-bottom: 72px;
   font-family: "Yanone Kaffeesatz", arial, serif;
@@ -113,14 +110,15 @@ body > header:first-child p {
   text-transform: uppercase;
   font-size: 72px;
   line-height: 72px;
+  text-shadow: 0 2px 3px black, 0 -1px 0 white;
 }
-/* line 43, ../_sass/_typography.sass */
+/* line 46, ../_sass/_typography.sass */
 body > header:first-child p em {
   color: #f8005d;
   font-style: normal;
 }
 
-/* line 48, ../_sass/_typography.sass */
+/* line 51, ../_sass/_typography.sass */
 code {
   font-family: "Inconsolata", "Monaco", "DejaVu Sans Mono", "Consolas", monospace;
   font-weight: normal;
