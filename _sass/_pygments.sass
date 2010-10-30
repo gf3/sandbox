@@ -1,0 +1,52 @@
+/* ------------------------------ Pygments Syntax Highlighting ------------------------------
+// Code Blocks
+.highlight pre
+  margin: 0 0 18px 0
+  padding: 9px
+  background: #141616
+  color: #FFF
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+  border-radius: 5px
+  -moz-box-shadow: inset 0 1px 0 black, inset 0 -1px 0 white
+  -webkit-box-shadow: inset 0 1px 0 black, inset 0 -1px 0 white
+  box-shadow: inset 0 1px 0 black, inset 0 -1px 0 white
+
+// Type
+.highlight
+  // Comment
+  .c
+    color: #4B5A5F
+  // Comment Single, Comment Multiline, Comment Preproc, Comment Special
+  .c1, .cm, .cp, .cs
+    @extend .c
+  // Keyword
+  .k
+    color: #2EBCCB
+  // Keyword Declaration, Keyword Constant, Keyword Pseudo, Keyword Reserved
+  .kd, .kc, .kp, .kr
+    color: #F8005D
+  // Keyword Reserved
+  .kr
+    color: red
+  // Operator
+  .o
+    color: #97DC08
+  // String
+  .s
+    color: #DDD260
+  // Literal String Single, Literal String Backtick, Literal String Char, Literal String Doc, Literal String Double, Literal String Escape, Literal String Heredoc, Literal String Interpol, Literal String Other
+  .s1, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx
+    @extend .s
+  // Literal String Regex
+  .sr
+  // Number
+  .n
+    color: #9B61FF
+  // Literal Number Float, Literal Number Hex, Literal Number Integer, Literal Number Oct
+  .mf, .mh, .mi, .mo
+    @extend .n
+  // Parenthesis
+  .p
+    color: #97DC08
+

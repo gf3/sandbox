@@ -1,0 +1,28 @@
+// Compass
+@import 'compass/css3'
+@import 'compass/utilities'
+
+// Vars & Mixins
+$default-box-shadow-color: rgba(0, 0, 0, .6)
+
+@mixin yk-normal
+  font:
+    family: 'Yanone Kaffeesatz', arial, serif
+    weight: 400
+  text-transform: uppercase
+
+@mixin yk-bold
+  +yk-normal
+  font-weight: 700
+
+@mixin inconsolata
+  font:
+    family: 'Inconsolata', 'Monaco', 'DejaVu Sans Mono', 'Consolas', monospace
+    weight: normal
+
+// Lulz
+@import layout
+@import typography
+@import misc
+@import pygments
+

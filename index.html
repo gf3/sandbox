@@ -1,0 +1,110 @@
+---
+layout: default
+title: A nifty javascript sandbox for node.js
+---
+
+<section id="features">
+  <header>
+    <h2>Features</h2>
+  </header>
+  
+  <ul>
+    <li>Can be used to execute untrusted code.</li>
+    <li>Support for timeouts (e.g. prevent infinite loops)</li>
+    <li>Handles errors gracefully</li>
+    <li>Restricted code (cannot access node.js methods)</li>
+    <li>Supports <code>console.log</code> and <code>print</code> utility methods</li>
+  </ul>
+
+</section>
+
+<section id="examples">
+  <header>
+    <h2>Examples</h2>
+  </header>
+  
+  <p>Be sure to check out example/example.js in the repo.</p>
+
+{% highlight javascript %}
+var s = new Sandbox()
+s.run( '1 + 1 + " apples"', function( output ) {
+  // output.result == "2 apples"
+})
+{% endhighlight %}
+  
+</section>
+
+<section id="docs">
+  <header>
+    <h2>Documentation</h2>
+  </header>
+  
+  <p>Basic syntax: <code>sandbox_instance.run( output, hollaback )</code></p>
+  
+  <p>
+    <code>output</code> is an object with two properties: <code>result</code>
+    and <code>console</code>. The <code>result</code> property is an inspected
+    string of the return value of the code. The <code>console</code> property
+    is an array of all console output.
+  </p>
+  
+  <p>For example, given the following code:</p>
+  
+{% highlight javascript %}
+function add( a, b ){
+  console.log( a )
+  console.log( b )
+  return a + b
+}
+add( 20, 22 )
+{% endhighlight %}
+  
+  <p>The resulting output object is:</p>
+  
+{% highlight javascript %}
+{ result: "42"
+, console: [ "20", "22" ]
+}
+{% endhighlight %}
+
+</section>
+
+<section id="install">
+  <header>
+    <h2>Installation &amp; Running</h2>
+  </header>
+  
+  <p>Let's get it! The easiest way is through npm:</p>
+  
+{% highlight console %}
+npm install sandbox
+{% endhighlight %}
+  
+  <p>Or if you'd like to play with the code, see the examples, run the tests, what-the-fuck-ever...</p>
+  
+{% highlight console %}
+git clone git://github.com/gf3/sandbox.git
+{% endhighlight %}
+  
+  <p>And run some examples:</p>
+  
+{% highlight console %}
+node example/example.js
+{% endhighlight %}
+
+</section>
+
+<section id="tests">
+  <header>
+    <h2>Tests</h2>
+  </header>
+  
+  <p>To run the tests you'll have to install <code>async_testing</code>, then simply run the spec files from node.</p>
+
+{% highlight console %}
+npm install async_testing
+node spec/sandbox.spec.js
+{% endhighlight %}
+
+</section>
+

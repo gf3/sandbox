@@ -1,0 +1,50 @@
+html, body
+  font:
+    size: 14px
+  line-height: 18px
+  color: #414141
+
+// Links
+.content a
+  +link-colors(#ED7D18)
+  +hover-link
+
+// Headings
+h1, h2, h3
+  +yk-normal
+  text-shadow: 0 2px 2px rgba(0,0,0, .66), 0 -1px 0 rgba(255,255,255, .75)
+
+h1
+  margin-bottom: 12px
+  font-size: 24px
+  line-height: 24px
+
+h2
+  margin-bottom: 4px
+  font-size: 32px
+  line-height: 32px
+
+h3
+  margin-bottom: 16px
+  font-size: 20px
+  line-height: 20px
+
+// Header
+body > header:first-child
+  text-shadow: 0 2px 3px #000, 0 -1px 0 #FFF
+  h1
+    +yk-bold
+    color: #8FD323
+  p
+    margin-bottom: 72px
+    +yk-normal
+    font-size: 72px
+    line-height: 72px
+    em
+      color: #F8005D
+      font-style: normal
+
+// Code
+code
+  +inconsolata
+

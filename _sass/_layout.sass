@@ -1,0 +1,37 @@
+html
+  background: #EBEBEB image-url('bkg.jpg') left top repeat
+
+body
+  background-image: -webkit-gradient(radial, 50% 0, 150, 50% 0, 750, from(rgba(255,255,255, .9)), to(rgba(255,255,255, 0)))
+  background-image: -moz-radial-gradient(50% 0% 90deg, circle closest-corner, rgba(255,255,255, .9), rgba(255,255,255, 0))
+  background-color: transparent
+
+// Layout
+body > header, body > section
+  margin: 0 auto 54px auto
+  width: 550px
+
+// HTML 5
+header, section, aside, footer
+  display: block
+
+/* ------------------------------ Header ------------------------------
+body > header:first-child
+  padding-top: 72px
+
+/* ------------------------------ Footer ------------------------------
+footer
+  padding:
+    top: 36px
+    bottom: 54px
+  // outline: 1px solid rgba(0,0,0, .3)
+  border-top: 1px solid rgba(255,255,255, .9)
+  background: #393939 image-url('footer-bkg.jpg') left top repeat
+  color: #CCC
+  > *
+    margin: 0 auto
+    width: 550px
+  h2, h3
+    color: #535353
+    text-shadow: 0 -1px 0 #000
+

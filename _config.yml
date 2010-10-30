@@ -1,0 +1,3 @@
+pygments: true
+exclude: [./_sass, config.rb, .gitignore]
+
