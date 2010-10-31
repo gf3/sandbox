@@ -21,7 +21,11 @@ Be sure to check out example/example.js
 
 ## Documentation
 
-Basic syntax: `sandbox_instance.run( output, hollaback )`
+Basic syntax: `sandbox_instance.run( code, hollaback )`
+
+`code` is the string of Javascript to be executed.
+
+`hollaback` is a function, and it's called with a single argument, `output`.
 
 `output` is an object with two properties: `result` and `console`. The `result`
 property is an inspected string of the return value of the code. The `console`
