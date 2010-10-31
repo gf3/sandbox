@@ -41,6 +41,10 @@ s.run( '1 + 1 + " apples"', function( output ) {
   
   <p>Basic syntax: <code>sandbox_instance.run( output, hollaback )</code></p>
   
+  <p><code>code</code> is the string of Javascript to be executed.</p>
+
+  <p><code>hollaback</code> is a function, and it's called with a single argument, <code>output</code>.</p>
+
   <p>
     <code>output</code> is an object with two properties: <code>result</code>
     and <code>console</code>. The <code>result</code> property is an inspected
