@@ -1,6 +1,6 @@
 # Node Sandbox
 
-A nifty javascript sandbox for use with node.js.
+A nifty javascript sandbox for node.js.
 
 ## Some features
 
@@ -48,7 +48,8 @@ Let's get it! The easiest way is through npm:
 
     npm install sandbox
 
-Or if you'd like to play with the code, see the examples, run the tests, what-the-fuck-ever...
+Or if you'd like to play with the code, see the examples, run the tests,
+what-the-fuck-ever...
 
     git clone git://github.com/gf3/sandbox.git
 
@@ -57,6 +58,9 @@ And run some examples:
     node example/example.js
 
 ## Tests
+
+To run the tests you'll have to install async_testing, then simply run the spec
+files from node.
 
     npm install async_testing
     node spec/sandbox.spec.js

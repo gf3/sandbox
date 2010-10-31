@@ -1,5 +1,6 @@
 { "name" : "sandbox"
-, "description": "A nifty javascript sandbox for use with node.js"
+, "description": "A nifty javascript sandbox for node.js"
+, "homepage" : "http://gf3.github.com/sandbox/"
 , "author" : "Gianni Chiappetta <gianni@runlevel6.org> (http://gf3.ca)"
 , "contributors":
   [ "Dominic Tarr (http://cyber-hobo.blogspot.com)"
