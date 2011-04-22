@@ -14,10 +14,12 @@ A nifty javascript sandbox for node.js.
 
 Be sure to check out example/example.js
 
-    var s = new Sandbox()
-    s.run( '1 + 1 + " apples"', function( output ) {
-      // output.result == "2 apples"
-    })
+```javascript
+var s = new Sandbox()
+s.run( '1 + 1 + " apples"', function( output ) {
+  // output.result == "2 apples"
+})
+```
 
 ## Documentation
 
@@ -33,18 +35,22 @@ property is an array of all console output.
 
 For example, given the following code:
 
-    function add( a, b ){
-      console.log( a )
-      console.log( b )
-      return a + b
-    }
-    add( 20, 22 )
+```javascript
+function add( a, b ){
+  console.log( a )
+  console.log( b )
+  return a + b
+}
+add( 20, 22 )
+```
 
 The resulting output object is:
 
-    { result: "42"
-    , console: [ "20", "22" ]
-    }
+```javascript
+{ result: "42"
+, console: [ "20", "22" ]
+}
+```
 
 ## Installation & Running
 
