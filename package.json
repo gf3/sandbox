@@ -23,6 +23,7 @@
     "url": "http://github.com/gf3/sandbox/raw/master/UNLICENSE"
   },
   "dependencies": {
-    "broadway": "~0.1.2"
+    "broadway": "~0.1.2",
+    "intercom": "~0.2.4"
   }
 }
