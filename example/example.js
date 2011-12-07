@@ -5,7 +5,7 @@ var Sandbox = require("../lib/sandbox")
 s.run( "1 + 1", function( output ) {
   console.log( "Example 1: " + output.result + "\n" )
 })
-
+/*
 // Example 2 - Something slightly more complex
 s.run( "(function(name) { return 'Hi there, ' + name + '!'; })('Fabio')", function( output ) {
   console.log( "Example 2: " + output.result + "\n" )
@@ -24,5 +24,5 @@ s.run( "process.platform", function( output ) {
 // Example 5 - Infinite loop
 s.run( "while (true) {}", function( output ) {
   console.log( "Example 5: " + output.result + "\n" )
-})
+})*/
 
