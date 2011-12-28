@@ -5,10 +5,13 @@
 , "contributors":
   [ "Dominic Tarr (http://cyber-hobo.blogspot.com)"
   ]
-, "version" : "0.8.1"
+, "version" : "0.8.2"
 , "main" : "./lib/sandbox"
 , "directories" : { "lib" : "./lib" }
 , "engines" : [ "node >=0.3.0-pre" ]
+, "devDependencies" :
+  { "async_testing": ">=0.3.0"
+  }
 , "repository" :
   { "type" : "git"
   , "url" : "https://gf3@github.com/gf3/sandbox.git"
