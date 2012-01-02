@@ -26,3 +26,23 @@ s.run( "while (true) {}", function( output ) {
   console.log( "Example 5: " + output.result + "\n" )
 })
 
+// Example 6 - Caller Attack Failure
+s.run( "(function foo() {return foo.caller.caller;})()", function( output ) {
+  console.log( "Example 6: " + output.result + "\n" )
+})
+
+// Example 7 - Argument Attack Failure
+s.run( "(function foo() {return [].slice.call(foo.caller.arguments);})()", function( output ) {
+  console.log( "Example 7: " + output.result + "\n" )
+})
+
+// Example 8 - Type Coersion Attack Failure
+s.run( "(function foo() {return {toJSON:function x(){return x.caller.caller.name}}})()", function( output ) {
+  console.log( "Example 8: " + output.result + "\n" )
+})
+
+// Example 9 - Global Attack Failure
+s.run( "x=1;(function() {return this})().console.log.constructor('return this')()", function( output ) {
+  console.log( "Example 9: " + output.result + "\n" )
+})
+
