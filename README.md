@@ -82,5 +82,6 @@ Sandbox is [UNLICENSED](http://unlicense.org/).
 ## Author
 
 - Written by [Gianni Chiappetta](http://github.com/gf3) &ndash; [gf3.ca](http://gf3.ca)
+- Contributions by [Bradley Meck](https://github.com/bmeck)
 - Contributions by [Dominic Tarr](http://github.com/dominictarr) &ndash; [cyber-hobo.blogspot.com](http://cyber-hobo.blogspot.com/)
 

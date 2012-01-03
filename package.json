@@ -3,7 +3,8 @@
 , "homepage" : "http://gf3.github.com/sandbox/"
 , "author" : "Gianni Chiappetta <gianni@runlevel6.org> (http://gf3.ca)"
 , "contributors":
-  [ "Dominic Tarr (http://cyber-hobo.blogspot.com)"
+  [ "Bradley Meck <bradley.meck@gmail.com>"
+  , "Dominic Tarr (http://cyber-hobo.blogspot.com)"
   ]
 , "version" : "0.8.2"
 , "main" : "./lib/sandbox"
