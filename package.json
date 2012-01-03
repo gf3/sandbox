@@ -6,7 +6,7 @@
   [ "Bradley Meck <bradley.meck@gmail.com>"
   , "Dominic Tarr (http://cyber-hobo.blogspot.com)"
   ]
-, "version" : "0.8.2"
+, "version" : "0.8.3"
 , "main" : "./lib/sandbox"
 , "directories" : { "lib" : "./lib" }
 , "engines" : [ "node >=0.3.0-pre" ]
