@@ -24,7 +24,10 @@
   },
   "dependencies": {
     "broadway": "~0.1.2",
-    "intercom": "~0.2.4",
-    "colors": "~0.5.1"
+    "intercom": "~0.3",
+    "colors": "~0.5.1",
+    "stackedy": "~0.1.6",
+    "futures": "~2.3.1"
   }
 }
+
