@@ -6,12 +6,12 @@
   [ "Bradley Meck <bradley.meck@gmail.com>"
   , "Dominic Tarr (http://cyber-hobo.blogspot.com)"
   ]
-, "version" : "0.8.3"
+, "version" : "0.8.4"
 , "main" : "./lib/sandbox"
 , "directories" : { "lib" : "./lib" }
 , "engines" : [ "node >=0.5.0" ]
 , "devDependencies" :
-  { "async_testing": ">=0.3.0"
+  { "should": ">=0.5.1"
   }
 , "repository" :
   { "type" : "git"

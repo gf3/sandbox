@@ -46,3 +46,8 @@ s.run( "x=1;(function() {return this})().console.log.constructor('return this')(
   console.log( "Example 9: " + output.result + "\n" )
 })
 
+// Example 10 - Console Log
+s.run( "var x = 5; console.log(x * x); x", function( output ) {
+  console.log( "Example 10: " + output.console + "\n" )
+})
+
