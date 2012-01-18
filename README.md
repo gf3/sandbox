@@ -69,11 +69,9 @@ And run some examples:
 
 ## Tests
 
-To run the tests you'll have to install async_testing, then simply run the spec
-files from node.
+To run the tests simply run the test file with node.
 
-    npm install async_testing
-    node spec/sandbox.spec.js
+    node test/sandbox_test.js
 
 ## License
 
