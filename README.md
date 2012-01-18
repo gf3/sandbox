@@ -12,7 +12,7 @@ A nifty javascript sandbox for node.js.
 
 ## Example
 
-Be sure to check out example/example.js
+Be sure to check out [example/example.js](https://github.com/gf3/sandbox/blob/master/example/example.js)
 
 ```javascript
 var s = new Sandbox()
