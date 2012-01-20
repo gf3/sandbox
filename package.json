@@ -27,7 +27,10 @@
     "intercom": "~0.3",
     "colors": "~0.5.1",
     "stackedy": "~0.1.6",
-    "futures": "~2.3.1"
+    "futures": "~2.3.1",
+    "posix": "~0.0.6",
+    "request": "~2.9.3",
+    "async": "~0.1.15",
+    "underscore": "~1.3.0"
   }
 }
-

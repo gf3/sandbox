@@ -78,3 +78,14 @@ s.run( "var _ = require('underscore'); console.log(_([{a:'hello'}, {a:'world'}])
   console.log( this.name.bold.green, result )
 }.bind(s))
 
+s = new Sandbox({name: "Example 12"})
+s.run( "var request = require('request'); request('http://www.google.fr', function(err, response, body) {\
+    console.log(response.statusCode);\
+  });\
+  request('http://www.google.com', function(err, response, body) {\
+    console.log(response.statusCode);\
+  });", function( err, result ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
+  console.log( this.name.bold.green, result )
+}.bind(s))
+
