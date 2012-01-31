@@ -130,3 +130,19 @@ pi()", function( err, result ) {
 })
 /**/
 
+
+Sandbox({
+  name:"Invoke",
+  plugins: [
+      Sandbox.plugins.console,
+      Sandbox.plugins.timeout,
+      Sandbox.plugins.cpulimit,
+      Sandbox.plugins.module,
+      Sandbox.plugins.request,
+      Sandbox.plugins.invoke
+  ]
+}).run( "function main(param) {console.log('hello', param)};", function( err, result ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err )
+  console.log( this.name.bold.green, result )
+}).debugEvents()
+
