@@ -48,7 +48,7 @@ s.run(
   console.log( this.name.bold.green, result )
 }).debugEvents()
 
-/**/
+/**//*
 // Example 7 - Long loop
 Sandbox("This is a looooong synchronous loop")
   .run( "for( var i=0; i<10000000; i++) {if(!(i%1000000)) console.log('-',i/1000000,'-')} i;", function( err, result ) {
@@ -56,7 +56,7 @@ Sandbox("This is a looooong synchronous loop")
   console.log( this.name.bold.green, result )
 }).debugEvents()
 
-/**/
+/**//*
 // Example 8 - Using interval
 Sandbox({name: "Timeouting Interval"}).run( "setInterval(function(){console.log('==>hello')}, 20)", function( err, result ) {
   if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
@@ -71,7 +71,7 @@ Sandbox({name: "Small timeout"}).run( "setTimeout(function(){console.log('==>hel
   return true //setTimeout(this.emit.bind(this,"shovel::exit"), 100)
 }).debugEvents().on("sandbox::stop", function(){console.log("------ stopppppppppppped ! ------")})
 
-/**/
+/**//*
 // Example 9 - Infinite loop
 Sandbox("I will continue forever.. but the timeout").run( "i=0 ; while (true) {if(!i%1000) console.log('Example 9 ->', ++i)}", function( err, result ) {
   if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
@@ -104,7 +104,7 @@ Sandbox("Using the request plugin").run(
   console.log( this.name.bold.green, result )
 }).debugEvents()
 
-/**/
+/**//*
 Sandbox("CPU Burner").run("\
 function pi() {\n\
   var max = 1000000;\n\
@@ -128,8 +128,8 @@ pi()", function( err, result ) {
   if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
   console.log( this.name.bold.green, result )
 })
-/**/
 
+/**/
 Sandbox({
   name:"Invoke my main!",
   plugins: [
@@ -146,4 +146,79 @@ Sandbox({
 }).debugEvents()
 
 /**/
+Sandbox("Using exports with an array").run( "exports = [ { name: 'a' }, { name: 'b' } ]",
+  function( err, result, exports ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
+  console.log( this.name.bold.green, result, exports )
+})
+
+/**/
+Sandbox("Using exports with an object").run( "exports = {hello: 'world'}",
+  function( err, result, exports ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
+  console.log( this.name.bold.green, result, exports )
+})
+
+/**/
+Sandbox("Using exports with an array in a timeout").run( "setTimeout(function(){\n\
+  exports = [ { name: 'a' }, { name: 'b' } ]\n\
+  }, 10)",
+  function( err, result, exports ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
+  console.log( this.name.bold.green, result, exports )
+})
+
+/**/
+Sandbox("Using exports with an object in a timeout").run( "setTimeout(function(){\n\
+  exports = {hello: 'world'}\n\
+  }, 10)",
+  function( err, result, exports ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
+  console.log( this.name.bold.green, result, exports )
+})
+
+
+Sandbox("Using exports with an object in a timeout").run( "setTimeout(function(){\n\
+  exports = {hello: 'world'}\n\
+  }, 10)",
+  function( err, result, exports ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
+  console.log( this.name.bold.green, result, exports )
+})
+
+Sandbox("Changing a key in exports in a timeout").run( "setTimeout(function(){\n\
+  exports.hello = 'world'\n\
+  }, 10)",
+  function( err, result, exports ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
+  console.log( this.name.bold.green, result, exports )
+})
+
+Sandbox("Using a dummy var in a timeout").run( "dummy= {}; setTimeout(function(){\n\
+  dummy= {hello: 'world'}\n\
+  }, 10); exports.dummy = dummy",
+  function( err, result, exports ) {
+  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
+  console.log( this.name.bold.green, result, exports )
+})//.on("sandbox::shovel::run", function(code){console.log('--- runtime code ---\n'.bold.blue, code, '\n------'.bold.blue)})
+
+/**/
+Sandbox("Date should also work").run( 'console.log(new Date())').debugEvents()
+
+/**/
+Sandbox("Date should also work in a loop").run( 
+		'(function() {\n\
+		  var data = [ {toto: 1} , {titi:2}  ];\n\
+      for (var i=0; i < data.length; i++) {\n\
+        data[i].test= new Date();\n\
+      }\n\
+      return data;\n\
+    })()').debugEvents()
+/**/
+
+Sandbox("moment.js should also work thanks to module and globals plugin").run( "var moment = require('moment')\n\
+    var now = moment();\n\
+    console.log(now.format('dddd, MMMM Do YYYY, h:mm:ss a'));\n\
+    moment.lang('fr');\n\
+    console.log(now.format('LLLL'));")
 
