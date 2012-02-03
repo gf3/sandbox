@@ -162,11 +162,7 @@ Sandbox("Using exports with an object").run( "exports = {hello: 'world'}",
 /**/
 Sandbox("Using exports with an array in a timeout").run( "setTimeout(function(){\n\
   exports = [ { name: 'a' }, { name: 'b' } ]\n\
-  }, 10)",
-  function( err, result, exports ) {
-  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
-  console.log( this.name.bold.green, result, exports )
-})
+  }, 10)")
 
 /**/
 Sandbox("Using exports with an object in a timeout").run( "setTimeout(function(){\n\
@@ -180,27 +176,15 @@ Sandbox("Using exports with an object in a timeout").run( "setTimeout(function()
 
 Sandbox("Using exports with an object in a timeout").run( "setTimeout(function(){\n\
   exports = {hello: 'world'}\n\
-  }, 10)",
-  function( err, result, exports ) {
-  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
-  console.log( this.name.bold.green, result, exports )
-})
+  }, 10)")
 
 Sandbox("Changing a key in exports in a timeout").run( "setTimeout(function(){\n\
   exports.hello = 'world'\n\
-  }, 10)",
-  function( err, result, exports ) {
-  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
-  console.log( this.name.bold.green, result, exports )
-})
+  }, 10)")
 
 Sandbox("Using a dummy var in a timeout").run( "dummy= {}; setTimeout(function(){\n\
   dummy= {hello: 'world'}\n\
-  }, 10); exports.dummy = dummy",
-  function( err, result, exports ) {
-  if(err) return console.log( (this.name +" error:").bold.red, err.refinedStack )
-  console.log( this.name.bold.green, result, exports )
-})//.on("sandbox::shovel::run", function(code){console.log('--- runtime code ---\n'.bold.blue, code, '\n------'.bold.blue)})
+  }, 10); exports.dummy = dummy")//.on("sandbox::shovel::run", function(code){console.log('--- runtime code ---\n'.bold.blue, code, '\n------'.bold.blue)})
 
 /**/
 Sandbox("Date should also work").run( 'console.log(new Date())').debugEvents()
@@ -221,4 +205,15 @@ Sandbox("moment.js should also work thanks to module and globals plugin").run( "
     console.log(now.format('dddd, MMMM Do YYYY, h:mm:ss a'));\n\
     moment.lang('fr');\n\
     console.log(now.format('LLLL'));")
+    
+Sandbox("eval should work").run( "eval('1+1')")
+Sandbox("Date should not be extensible from inside the Sandbox as it is shared").run( "Date.toto=1").on('sandbox::return', function(err, res, exp) {
+  console.log('Date.toto should be undefined :'.bold.yellow, Date.toto)
+  Date.titi = 20
+  console.log('but Date.titi should be 20 :'.bold.yellow, Date.titi)
+  })
+  
+Sandbox("RegExp should work").run( "/tutu/g")
+Sandbox("Boolean should work").run( "true")
+Sandbox("NaN should work").run( "NaN")
 
