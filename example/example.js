@@ -187,7 +187,7 @@ Sandbox("Using a dummy var in a timeout").run( "dummy= {}; setTimeout(function()
   }, 10); exports.dummy = dummy")//.on("sandbox::shovel::run", function(code){console.log('--- runtime code ---\n'.bold.blue, code, '\n------'.bold.blue)})
 
 /**/
-Sandbox("Date should also work").run( 'console.log(new Date())').debugEvents()
+Sandbox("Date should also work").run( 'new Date()').debugEvents()
 
 /**/
 Sandbox("Date should also work in a loop").run( 
