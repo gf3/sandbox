@@ -24,7 +24,7 @@ sb.run( 'process.platform', function( output ) {
 
 
 // it should effectively prevent code from circumventing the sandbox
-sb.run( "var sys=require('sys'); sys.puts('Up in your fridge')", function( output ) {
+sb.run( "var util = require('util'); util.puts('Up in your fridge')", function( output ) {
   output.result.should.eql("'ReferenceError: require is not defined'")
 })
 
