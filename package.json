@@ -8,7 +8,7 @@
     "Bradley Meck <bradley.meck@gmail.com>",
     "Dominic Tarr (http://cyber-hobo.blogspot.com)"
   ],
-  "version": "0.8.4",
+  "version": "0.8.5",
   "main": "./lib/sandbox",
   "directories": {
     "lib": "./lib"
