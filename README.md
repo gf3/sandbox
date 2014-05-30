@@ -2,55 +2,60 @@
 
 A nifty javascript sandbox for node.js.
 
+
 ## Some features
 
 - Can be used to execute untrusted code.
 - Support for timeouts (e.g. prevent infinite loops)
+- Support for memory errors (and memory errors)
 - Handles errors gracefully
 - Restricted code (cannot access node.js methods)
 - Supports `console.log` and `print` utility methods
+
 
 ## Example
 
 Be sure to check out [example/example.js](https://github.com/gf3/sandbox/blob/master/example/example.js)
 
 ```javascript
-var s = new Sandbox()
-s.run( '1 + 1 + " apples"', function( output ) {
+var s = new Sandbox();
+s.run('1 + 1 + " apples"', function(output) {
   // output.result == "2 apples"
-})
+});
 ```
+
 
 ## Documentation
 
-Basic syntax: `sandbox_instance.run( code, hollaback )`
+### `Sandbox`#`run`(`code`, `hollaback`)
 
-`code` is the string of Javascript to be executed.
-
-`hollaback` is a function, and it's called with a single argument, `output`.
-
-`output` is an object with two properties: `result` and `console`. The `result`
-property is an inspected string of the return value of the code. The `console`
-property is an array of all console output.
+* `code` {`String`} — string of Javascript to be executed.
+* `hollaback` {`Function`} — called after execution with a single argument, `output`.
+    - `output` is an object with two properties: `result` and `console`. The `result`
+      property is an inspected string of the return value of the code. The `console`
+      property is an array of all console output.
 
 For example, given the following code:
 
 ```javascript
-function add( a, b ){
-  console.log( a )
-  console.log( b )
-  return a + b
+function add(a, b){
+  console.log(a);
+  console.log(b);
+  return a + b;
 }
-add( 20, 22 )
+
+add(20, 22);
 ```
 
 The resulting output object is:
 
 ```javascript
-{ result: "42"
-, console: [ "20", "22" ]
+{
+  result: "42",
+  console: ["20", "22"]
 }
 ```
+
 
 ## Installation & Running
 
@@ -67,19 +72,22 @@ And run some examples:
 
     node example/example.js
 
+
 ## Tests
 
 To run the tests simply run the test file with node.
 
-    node test/sandbox_test.js
+    npm test
+
 
 ## License
 
 Sandbox is [UNLICENSED](http://unlicense.org/).
 
-## Author
 
-- Written by [Gianni Chiappetta](http://github.com/gf3) &ndash; [gf3.ca](http://gf3.ca)
-- Contributions by [Bradley Meck](https://github.com/bmeck)
-- Contributions by [Dominic Tarr](http://github.com/dominictarr) &ndash; [cyber-hobo.blogspot.com](http://cyber-hobo.blogspot.com/)
+## Contributors
 
+- [Gianni Chiappetta](http://github.com/gf3) – [gf3.ca](http://gf3.ca)
+- [Bradley Meck](https://github.com/bmeck)
+- [Dominic Tarr](http://github.com/dominictarr) – [cyber-hobo.blogspot.com](http://cyber-hobo.blogspot.com/)
+- [Eli Mallon](https://github.com/iameli) – [iame.li](http://iame.li/)
