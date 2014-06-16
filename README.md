@@ -11,6 +11,7 @@ A nifty javascript sandbox for node.js.
 - Handles errors gracefully
 - Restricted code (cannot access node.js methods)
 - Supports `console.log` and `print` utility methods
+- Supports interprocess messaging with the sandboxed code
 
 
 ## Example
@@ -55,6 +56,39 @@ The resulting output object is:
   console: ["20", "22"]
 }
 ```
+
+### `Sandbox`#`postMessage`(`message`)
+
+* `message` {`String`} - message to send to the sandboxed code
+
+For example, the following code will send a message from outside of the sandbox in
+and then the sandboxed code will respond with its own message. Note that the sandboxed
+code handles incoming messages by defining a global `onmessage` function and can
+send messages to the outside using the `postMessage` function.
+
+Sandboxed code:
+```javascript
+onmessage = function(message){
+  if (message === 'hello from outside') {
+    postMessage('hello from inside');
+  }
+};
+```
+
+Sandbox:
+```
+var sandbox = new Sandbox();
+sandbox.run(sandboxed_code);
+sandbox.on('message', function(message){
+  // Handle message sent from the inside
+  // In this example message will be 'hello from inside'
+});
+sandbox.postMessage('hello from outside');
+```
+
+The process will ONLY be considered finished if `onmessage` is NOT a function.
+If `onmessage` is defined the sandbox will assume that it is waiting for an
+incoming message.
 
 
 ## Installation & Running

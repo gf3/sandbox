@@ -51,3 +51,14 @@ s.run( "var x = 5; console.log(x * x); x", function( output ) {
   console.log( "Example 10: " + output.console + "\n" )
 })
 
+// Example 11 - IPC Messaging
+s.run( "onmessage = function(message){ if (message === 'hello from outside') { postMessage('hello from inside'); };", function(output){
+  
+})
+s.on('message', function(message){
+  console.log("Example 11: received message sent from inside the sandbox '" + message + "'\n")
+});
+var test_message = "hello from outside";
+console.log("Example 11: sending message into the sandbox '" + test_message + "'");
+s.postMessage(test_message);
+
