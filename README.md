@@ -125,3 +125,4 @@ Sandbox is [UNLICENSED](http://unlicense.org/).
 - [Bradley Meck](https://github.com/bmeck)
 - [Dominic Tarr](http://github.com/dominictarr) – [cyber-hobo.blogspot.com](http://cyber-hobo.blogspot.com/)
 - [Eli Mallon](https://github.com/iameli) – [iame.li](http://iame.li/)
+- [Evan Schwartz](https://github.com/emschwartz)
