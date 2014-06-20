@@ -32,5 +32,8 @@
   "license": {
     "type": "Public Domain",
     "url": "http://github.com/gf3/sandbox/raw/master/UNLICENSE"
+  },
+  "dependencies": {
+    "concat-stream": "^1.4.6"
   }
 }
