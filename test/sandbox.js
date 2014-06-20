@@ -2,9 +2,14 @@
 // Init
 //-----------------------------------------------------------------------------
 
-var should  = require('should');
-var sinon   = require('sinon');
-var Sandbox = require('../lib/sandbox');
+// Using chai/expect instead of should because it handles
+// null and undefined values more cleanly
+var chai      = require('chai');
+var expect    = chai.expect;
+var sinon     = require('sinon');
+var sinonChai = require('sinon-chai');
+chai.use(sinonChai);
+var Sandbox   = require('../lib/sandbox');
 
 //-----------------------------------------------------------------------------
 // Tests
@@ -18,60 +23,63 @@ describe('Sandbox', function() {
 
   it('should execute basic javascript', function(done) {
     sb.run('1 + 1', function(output) {
-      output.result.should.eql('2');
+      expect(output.result).to.equal('2');
       done();
     });
   });
 
   it('should gracefully handle syntax errors', function(done) {
     sb.run('hi )there', function(output) {
-      output.result.should.eql("'SyntaxError: Unexpected token )'");
+      expect(output.result).to.equal("'SyntaxError: Unexpected token )'");
       done();
     });
   });
 
   it('should effectively prevent code from accessing node', function(done) {
     sb.run('process.platform', function(output) {
-      output.result.should.eql("null");
+      expect(output.result).to.equal("null");
       done();
     });
   });
 
   it('should effectively prevent code from circumventing the sandbox', function(done) {
     sb.run("var sys=require('sys'); sys.puts('Up in your fridge')", function(output) {
-      output.result.should.eql("'ReferenceError: require is not defined'");
+      expect(output.result).to.equal("'ReferenceError: require is not defined'");
       done();
     });
   });
 
   it('should timeout on infinite loops', function(done) {
     sb.run('while ( true ) {}', function(output) {
-      output.result.should.eql('TimeoutError');
+      expect(output.result).to.equal('TimeoutError');
       done();
     });
   });
 
   it('should allow console output via `console.log`', function(done) {
     sb.run('console.log(7); 42', function(output) {
-      output.result.should.eql('42');
-      output.console[0].should.eql(7);
+      expect(output.result).to.equal('42');
+      expect(output.console).to.have.length(1);
+      expect(output.console[0]).to.equal(7);
       done();
     });
   });
 
   it('should allow console output via `print`', function(done) {
     sb.run('print(7); 42', function(output) {
-      output.result.should.eql('42');
-      output.console[0].should.eql(7);
+      expect(output.result).to.equal('42');
+      expect(output.console).to.have.length(1);
+      expect(output.console[0]).to.equal(7);
       done();
     });
   });
 
   it('should maintain the order of sync. console output', function(done) {
     sb.run('console.log("first"); console.log("second"); 42', function(output) {
-      output.result.should.eql('42');
-      output.console[0].should.eql('first');
-      output.console[1].should.eql('second');
+      expect(output.result).to.equal('42');
+      expect(output.console).to.have.length(2);
+      expect(output.console[0]).to.equal('first');
+      expect(output.console[1]).to.equal('second');
       done();
     });
   });
@@ -80,8 +88,8 @@ describe('Sandbox', function() {
     var messageHandler = sinon.spy();
     sb.on('message', messageHandler);
     sb.run('postMessage("Hello World!");', function(output){
-      messageHandler.calledOnce.should.eql(true);
-      messageHandler.calledWith('Hello World!').should.eql(true);
+      expect(messageHandler.calledOnce).to.be.true;
+      expect(messageHandler).to.be.calledWith('Hello World!');
       done();
     });
   });
@@ -93,8 +101,8 @@ describe('Sandbox', function() {
       sb.postMessage('Hello World!');
     });
     sb.run('onmessage = function (msg) { postMessage(msg); };', function(output) {
-      messageHandler.callCount.should.eql(1);
-      messageHandler.calledWith('Hello World!').should.eql(true);
+      expect(messageHandler).to.be.calledOnce;
+      expect(messageHandler).to.be.calledWith('Hello World!');
       done();
     });
   });
@@ -107,8 +115,8 @@ describe('Sandbox', function() {
     }, 1);
     sb.on('message', messageHandler);
     sb.run('onmessage = function (msg) { postMessage(msg); };', function(output) {
-      messageHandler.callCount.should.eql(num_messages_sent);
-      num_messages_sent.should.be.greaterThan(0);
+      expect(messageHandler.callCount).to.equal(num_messages_sent);
+      expect(num_messages_sent).to.be.greaterThan(0);
       done();
     });
     sb.on('ready', function(){
