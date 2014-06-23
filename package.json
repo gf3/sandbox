@@ -18,8 +18,9 @@
   ],
   "devDependencies": {
     "mocha": "1.20.1",
-    "should": "0.6.3",
-    "sinon": "~1.10.2"
+    "chai": "1.9.1",
+    "sinon": "~1.10.2",
+    "sinon-chai": "2.5.0"
   },
   "repository": {
     "type": "git",
@@ -31,5 +32,8 @@
   "license": {
     "type": "Public Domain",
     "url": "http://github.com/gf3/sandbox/raw/master/UNLICENSE"
+  },
+  "dependencies": {
+    "concat-stream": "^1.4.6"
   }
 }

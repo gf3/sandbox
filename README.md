@@ -11,7 +11,7 @@ A nifty javascript sandbox for node.js.
 - Handles errors gracefully
 - Restricted code (cannot access node.js methods)
 - Supports `console.log` and `print` utility methods
-- Supports interprocess messaging with the sandboxed code
+- Supports interprocess (IPC) messaging with the sandboxed code
 
 
 ## Example
@@ -28,13 +28,11 @@ s.run('1 + 1 + " apples"', function(output) {
 
 ## Documentation
 
-### `Sandbox`#`run`(`code`, `hollaback`)
+### `Sandbox`#`run`(`code`, `callback`)
 
 * `code` {`String`} — string of Javascript to be executed.
-* `hollaback` {`Function`} — called after execution with a single argument, `output`.
-    - `output` is an object with two properties: `result` and `console`. The `result`
-      property is an inspected string of the return value of the code. The `console`
-      property is an array of all console output.
+* `callback` {`Function`} — called after execution with two arguments, `error` and
+  `result`
 
 For example, given the following code:
 
@@ -48,14 +46,8 @@ function add(a, b){
 add(20, 22);
 ```
 
-The resulting output object is:
+The callback will be called with `(null, '42')`
 
-```javascript
-{
-  result: "42",
-  console: ["20", "22"]
-}
-```
 
 ### `Sandbox`#`postMessage`(`message`)
 
@@ -86,9 +78,10 @@ sandbox.on('message', function(message){
 sandbox.postMessage('hello from outside');
 ```
 
-The process will ONLY be considered finished if `onmessage` is NOT a function.
-If `onmessage` is defined the sandbox will assume that it is waiting for an
-incoming message.
+The process will ONLY be considered finished if `onmessage` is NOT a function or
+`process.exit()` is called. If `onmessage` is defined the sandbox will assume that
+it is waiting for an incoming message. Note, however, that the timeout will still
+cause asynchronous sandboxed code to result in a `TimeoutError` if it takes too long.
 
 
 ## Installation & Running
