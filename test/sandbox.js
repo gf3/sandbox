@@ -116,4 +116,24 @@ describe('Sandbox', function() {
     });
   });
 
+  it('should keep the process alive when timeout is explicitly disabled', function(done){
+    sb = new Sandbox({timeout : null});   //disable timeout
+    var messageHandler = sinon.spy();
+    var messageHandler2 = sinon.spy();
+    var num_messages_sent = 0;
+    var interval = setInterval(function(){
+      sb.postMessage(++num_messages_sent);
+    }, 100);
+    sb.on('message', messageHandler);
+    sb.run('onmessage = function (msg) { postMessage(msg); };', messageHandler2);
+    setTimeout(function(){
+      messageHandler.callCount.should.eql(num_messages_sent);
+      num_messages_sent.should.be.greaterThan(0);
+
+      messageHandler2.callCount.should.eql(0);    //messageHandler2 should never be called
+      clearInterval(interval);
+      done();
+    },1000);
+  });
+
 });
