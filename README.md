@@ -76,7 +76,7 @@ onmessage = function(message){
 ```
 
 Sandbox:
-```
+```javascript
 var sandbox = new Sandbox();
 sandbox.run(sandboxed_code);
 sandbox.on('message', function(message){
