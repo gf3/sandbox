@@ -1,10 +1,12 @@
-# Node Sandbox
+Node Sandbox
+============
+
+[![GitHub Stars](https://img.shields.io/github/stars/gf3/sandbox.svg?style=flat-square)](https://github.com/gf3/sandbox/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/gf3/sandbox.svg?style=flat-square)](https://github.com/gf3/sandbox/issues) [![License](https://img.shields.io/badge/license-UNLICENSE-blue.svg?style=flat-square)](https://github.com/gf3/sandbox/blob/master/UNLICENSE)
 
 A nifty javascript sandbox for node.js.
 
 
 ## Some features
-
 - Can be used to execute untrusted code.
 - Support for timeouts (e.g. prevent infinite loops)
 - Support for memory errors (and memory errors)
@@ -15,7 +17,6 @@ A nifty javascript sandbox for node.js.
 
 
 ## Example
-
 Be sure to check out [example/example.js](https://github.com/gf3/sandbox/blob/master/example/example.js)
 
 ```javascript
@@ -29,7 +30,6 @@ s.run('1 + 1 + " apples"', function(output) {
 ## Documentation
 
 ### `Sandbox`#`run`(`code`, `hollaback`)
-
 * `code` {`String`} — string of Javascript to be executed.
 * `hollaback` {`Function`} — called after execution with a single argument, `output`.
     - `output` is an object with two properties: `result` and `console`. The `result`
@@ -37,9 +37,8 @@ s.run('1 + 1 + " apples"', function(output) {
       property is an array of all console output.
 
 For example, given the following code:
-
 ```javascript
-function add(a, b){
+function add(a, b) {
   console.log(a);
   console.log(b);
   return a + b;
@@ -49,7 +48,6 @@ add(20, 22);
 ```
 
 The resulting output object is:
-
 ```javascript
 {
   result: "42",
@@ -58,8 +56,7 @@ The resulting output object is:
 ```
 
 ### `Sandbox`#`postMessage`(`message`)
-
-* `message` {`String`} - message to send to the sandboxed code
+* `message` {`String`} - message to send to the sandboxed code.
 
 For example, the following code will send a message from outside of the sandbox in
 and then the sandboxed code will respond with its own message. Note that the sandboxed
@@ -68,7 +65,7 @@ send messages to the outside using the `postMessage` function.
 
 Sandboxed code:
 ```javascript
-onmessage = function(message){
+onmessage = function(message) {
   if (message === 'hello from outside') {
     postMessage('hello from inside');
   }
@@ -76,10 +73,10 @@ onmessage = function(message){
 ```
 
 Sandbox:
-```
+```javascript
 var sandbox = new Sandbox();
 sandbox.run(sandboxed_code);
-sandbox.on('message', function(message){
+sandbox.on('message', function(message) {
   // Handle message sent from the inside
   // In this example message will be 'hello from inside'
 });
@@ -92,7 +89,6 @@ incoming message.
 
 
 ## Installation & Running
-
 Let's get it! The easiest way is through npm:
 
     npm install sandbox
@@ -108,21 +104,18 @@ And run some examples:
 
 
 ## Tests
-
 To run the tests simply run the test file with node.
 
     npm test
 
 
-## License
-
-Sandbox is [UNLICENSED](http://unlicense.org/).
-
-
 ## Contributors
-
 - [Gianni Chiappetta](http://github.com/gf3) – [gf3.ca](http://gf3.ca)
 - [Bradley Meck](https://github.com/bmeck)
 - [Dominic Tarr](http://github.com/dominictarr) – [cyber-hobo.blogspot.com](http://cyber-hobo.blogspot.com/)
 - [Eli Mallon](https://github.com/iameli) – [iame.li](http://iame.li/)
 - [Evan Schwartz](https://github.com/emschwartz)
+
+
+## License
+Sandbox is [UNLICENSED](http://unlicense.org/)
