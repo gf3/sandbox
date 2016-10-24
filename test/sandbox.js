@@ -98,7 +98,7 @@ describe('Sandbox', function() {
       done();
     });
   });
-  
+
   it('should queue messages posted before the sandbox is ready and process them once it is', function(done){
     var messageHandler = sinon.spy();
     var num_messages_sent = 0;
@@ -116,4 +116,10 @@ describe('Sandbox', function() {
     });
   });
 
+  it('should not be exploitable via constructor', function(done) {
+    sb.run(`new Function("return (this.constructor.constructor('return (this.process.mainModule.constructor._load)')())")()("util").inspect("hi")`, function(output){
+      output.result.should.eql("'TypeError: Cannot read property \\'constructor\\' of undefined'");
+      done();
+    })
+  })
 });
