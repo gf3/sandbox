@@ -18,8 +18,9 @@
   ],
   "devDependencies": {
     "mocha": "1.20.1",
-    "should": "0.6.3",
-    "sinon": "~1.10.2"
+    "chai": "1.9.1",
+    "sinon": "~1.10.2",
+    "sinon-chai": "2.5.0"
   },
   "repository": {
     "type": "git",
