@@ -11,11 +11,12 @@
 
 **It can...**
 
-- Be used to execute untrusted code
-- Timeout long-running code and prevent infinite loops
-- Handle errors gracefully
-- Run restricted code
-- Pass rich data structures back
+- [x] Be used to execute untrusted code
+- [ ] Timeout long-running code and infinite loops
+- [x] Handle errors gracefully
+- [x] Run restricted code
+- [x] Pass rich data structures back
+- [ ] Capture console output
 
 ```js
 const s = new Sandbox();
