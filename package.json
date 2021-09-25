@@ -1,0 +1,32 @@
+{
+  "name": "sandbox",
+  "version": "2.0.0",
+  "description": "A nifty JavaScript sandbox.",
+  "main": "index.js",
+  "scripts": {
+    "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
+    "build-debug": "npm run build --",
+    "build-release": "npm run build -- --release",
+    "install": "npm run build-release",
+    "test": "mocha"
+  },
+  "author": "Gianni Chiappetta <gianni@runlevel6.org>",
+  "license": "ISC",
+  "devDependencies": {
+    "cargo-cp-artifact": "^0.1",
+    "mocha": "^9.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gf3/sandbox.git"
+  },
+  "keywords": [
+    "javascript",
+    "sandbox",
+    "eval"
+  ],
+  "bugs": {
+    "url": "https://github.com/gf3/sandbox/issues"
+  },
+  "homepage": "https://github.com/gf3/sandbox#readme"
+}

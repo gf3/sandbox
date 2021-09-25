@@ -1,0 +1,8 @@
+edition = "2018"
+enum_discrim_align_threshold = 20
+reorder_impl_items = true
+reorder_imports = true
+reorder_modules = true
+tab_spaces = 2
+use_try_shorthand = true
+wrap_comments = true
