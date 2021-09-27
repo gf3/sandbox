@@ -4,10 +4,10 @@
   "description": "A nifty JavaScript sandbox.",
   "main": "index.js",
   "files": [
-    "binary.js",
     "index.js",
     "index.node",
-    "install.js"
+    "install.js",
+    "platform-target.js"
   ],
   "scripts": {
     "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
@@ -34,8 +34,5 @@
   "bugs": {
     "url": "https://github.com/gf3/sandbox/issues"
   },
-  "homepage": "https://github.com/gf3/sandbox#readme",
-  "dependencies": {
-    "binary-install": "^0.1.1"
-  }
+  "homepage": "https://github.com/gf3/sandbox#readme"
 }
