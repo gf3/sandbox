@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const { install } = require("./binary");
+const { install } = require("./platform-target");
 
 install();
