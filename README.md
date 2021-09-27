@@ -4,7 +4,7 @@
   A nifty JavaScript sandbox for Node.js.
   <br />
   <a href="https://github.com/gf3/sandbox/releases"><img src="https://img.shields.io/github/v/release/gf3/sandbox" alt="Latest Release"></a>
-  <a href="https://github.com/gf3/sandbox/actions"><img src="https://github.com/gf3/sandbox/actions/workflows/tests.yml/badge.svg?branch=sandbox-neon" alt="Build Status"></a>
+  <a href="https://github.com/gf3/sandbox/actions"><img src="https://github.com/gf3/sandbox/actions/workflows/tests.yml/badge.svg?branch=main" alt="Build Status"></a>
 </p>
 
 ## What is it?
