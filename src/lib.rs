@@ -5,35 +5,42 @@ use std::{
   thread,
 };
 
-/// Recursively convert a `JSONValue` to a `JsValue`
-fn to_value<'a, C: Context<'a>>(cx: &mut C, value: JSONValue) -> Handle<'a, JsValue> {
+enum ToValue {
+  Undefined,
+  Json(JSONValue),
+}
+
+/// Recursively convert a `ToValue` to a `JsValue`
+fn to_value<'a, C: Context<'a>>(cx: &mut C, value: ToValue) -> Handle<'a, JsValue> {
   match value {
-    JSONValue::Null => cx.null().upcast::<JsValue>(),
-    JSONValue::Bool(v) => cx.boolean(v).upcast::<JsValue>(),
-    JSONValue::Number(v) => cx.number(v.as_f64().unwrap()).upcast::<JsValue>(),
-    JSONValue::String(v) => cx.string(v).upcast::<JsValue>(),
-    JSONValue::Array(v) => {
+    ToValue::Json(JSONValue::Null) => cx.null().upcast::<JsValue>(),
+    ToValue::Json(JSONValue::Bool(v)) => cx.boolean(v).upcast::<JsValue>(),
+    ToValue::Json(JSONValue::Number(v)) => cx.number(v.as_f64().unwrap()).upcast::<JsValue>(),
+    ToValue::Json(JSONValue::String(v)) => cx.string(v).upcast::<JsValue>(),
+    ToValue::Json(JSONValue::Array(v)) => {
       let a = JsArray::new(cx, v.len() as u32);
 
       for (i, s) in v.iter().enumerate() {
-        let val = to_value(cx, s.to_owned());
+        let val = to_value(cx, ToValue::Json(s.to_owned()));
         a.set(cx, i as u32, val).unwrap();
       }
 
       a.upcast::<JsValue>()
     }
-    JSONValue::Object(v) => {
+    ToValue::Json(JSONValue::Object(v)) => {
       let o = cx.empty_object();
 
       for (_, (k, s)) in v.iter().enumerate() {
         let key = cx.string(k);
-        let val = to_value(cx, s.to_owned());
+        let val = to_value(cx, ToValue::Json(s.to_owned()));
 
         o.set(cx, key, val).unwrap();
       }
 
       o.upcast::<JsValue>()
     }
+
+    ToValue::Undefined => cx.undefined().upcast::<JsValue>(),
   }
 }
 
@@ -104,8 +111,9 @@ impl Shovel {
     shovel
       .send(move |context, channel| {
         let val = match context.eval(&source) {
-          Ok(v) => Ok(v.to_json(context).unwrap()),
-          Err(v) => Err(v.to_json(context).unwrap()),
+          Ok(boa::Value::Undefined) => Ok(ToValue::Undefined),
+          Ok(v) => Ok(ToValue::Json(v.to_json(context).unwrap())),
+          Err(v) => Err(ToValue::Json(v.to_json(context).unwrap())),
         };
 
         channel.send(move |mut cx| {

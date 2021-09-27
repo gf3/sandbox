@@ -90,6 +90,16 @@ describe("Sandbox", function () {
       );
     });
 
+    it("should be able to bridge `undefined` values", function (done) {
+      const s = new Sandbox();
+
+      s.eval("const a = 1;", function (err, res) {
+        assert.equal(err, undefined);
+        assert.equal(res, undefined);
+        done();
+      });
+    });
+
     it("should timeout on long computations");
   });
 });
