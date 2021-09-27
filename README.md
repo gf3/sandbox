@@ -22,7 +22,7 @@
 const s = new Sandbox();
 
 s.eval("const o = { answer: 4.2 }; o", function(err, res) {
-  console.log("The answer is: %d", res.answer * 10);
+  console.log("The answer is: %d", res.answer * 10); // The answer is: 42
 });
 ```
 
@@ -60,9 +60,9 @@ thread. This is made possible with the help of two incredible projects:
 
 The major drawback to this approach is that it either requires the user to build
 the `sandbox` locally from source (which requires the user to have the rust
-build tools onhand) or pre-built binaries for every platform would need to be
-provided. In order to make things a little more seamless for users, we've opted
-to provided pre-built binaries for the following platforms:
+build tools onhand) or provide pre-built binaries for every platform would need
+to be provided. In order to make things a little more seamless for users, we've
+opted to provided pre-built binaries for the following platforms:
 
 - Linux x86_64
 - MacOS arm64
