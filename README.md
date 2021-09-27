@@ -38,7 +38,7 @@ for your platform. If you wish to skip this action you can set the
 
 ```sh
 env SANDBOX_SKIP_DOWNLOAD=1 npm install --save sandbox
-`****
+```
 
 ## Usage
 
