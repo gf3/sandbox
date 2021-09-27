@@ -168,9 +168,17 @@ function verify(filename, callback) {
  * Determine the current platform and attempt to download and install a
  * pre-built binary.
  *
+ * NOTE: The download will be skipped if an environment variable
+ * `SANDBOX_SKIP_DOWNLOAD` exists.
+ *
  * @returns {void}
  */
 async function install() {
+  if (process.env.SANDBOX_SKIP_DOWNLOAD) {
+    log("skipping install");
+    return;
+  }
+
   const platform = getPlatform();
 
   log("install: %O", platform);
