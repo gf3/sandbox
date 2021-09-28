@@ -113,8 +113,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: actions/setup-node@v2
         with:
-          registry-url: 'https://npm.pkg.github.com/@gf3'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@gf3'
       - name: Publish to GitHub
         run: npm publish --tag ${{ steps.npm_tag.outputs.value }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
