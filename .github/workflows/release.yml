@@ -84,7 +84,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'rc') }}
-          name: ${{ steps.release.outouts.value }}
+          name: ${{ steps.release.outputs.value }}
           files: artifacts/**/*.gz
 
   publish:
