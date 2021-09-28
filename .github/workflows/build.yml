@@ -72,6 +72,11 @@ jobs:
       - name: Get version tag
         uses: olegtarasov/get-tag@v2.1
         id: tag
+      - name: Release name
+        id: release
+        run: |
+          ref="${{ steps.tag.outputs.tag }}"
+          echo "::set-output name=value::${ref:1}"
       - uses: actions/download-artifact@v2
         with:
           path: artifacts
@@ -79,6 +84,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'rc') }}
+          name: ${{ steps.release.outouts.value }}
           files: artifacts/**/*.gz
 
   publish:
